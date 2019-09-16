@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.mera.com/lessons/bsp/properties"
+           xmlns:def="http://www.mera.com/lessons/bsp/definitions"
+           xmlns="http://www.mera.com/lessons/bsp/properties">
+    <xs:import namespace="http://www.mera.com/lessons/bsp/definitions" schemaLocation="definitions.xsd"/>
+    <xs:element name="system" type="System"/>
+
+    <xs:complexType name="System">
+        <xs:sequence>
+            <xs:element type="Cabinet" name="cabinet"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Cabinet">
+        <xs:sequence>
+            <xs:element maxOccurs="3" type="Shelf" name="shelf"/>    
+        	<xs:element maxOccurs="3" type="def:PDU" name="pdu"/>        
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Shelf">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" type="def:Blade" name="blade"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="type"/>
+    </xs:complexType>
+
+</xs:schema>
